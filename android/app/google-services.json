@@ -1,0 +1,105 @@
+{
+  "project_info": {
+    "project_number": "1063670954198",
+    "project_id": "nspo-b03b4",
+    "storage_bucket": "nspo-b03b4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063670954198:android:690eaeceafb0d972507177",
+        "android_client_info": {
+          "package_name": "com.ahmedmorsi.hr"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2SyMlXPYUArpVy-0fVL6NMYlPUGFmeac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063670954198:android:cf220dcaeb579227507177",
+        "android_client_info": {
+          "package_name": "com.example.untitled1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2SyMlXPYUArpVy-0fVL6NMYlPUGFmeac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063670954198:android:e5819ee7b96afe51507177",
+        "android_client_info": {
+          "package_name": "com.flutter.incomming_call"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2SyMlXPYUArpVy-0fVL6NMYlPUGFmeac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063670954198:android:63742de9af2f20cd507177",
+        "android_client_info": {
+          "package_name": "com.gdelataillade.alarm.alarm_example"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2SyMlXPYUArpVy-0fVL6NMYlPUGFmeac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063670954198:android:5295465638ef8c07507177",
+        "android_client_info": {
+          "package_name": "com.nspo.nspo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2SyMlXPYUArpVy-0fVL6NMYlPUGFmeac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
