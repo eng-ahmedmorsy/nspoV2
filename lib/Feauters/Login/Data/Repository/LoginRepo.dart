@@ -1,5 +1,4 @@
 import 'package:nspo/Feauters/Login/Data/Models/LoginData.dart';
-import 'package:nspo/Feauters/Login/Data/Models/infoEmployee.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class LoginRepo {

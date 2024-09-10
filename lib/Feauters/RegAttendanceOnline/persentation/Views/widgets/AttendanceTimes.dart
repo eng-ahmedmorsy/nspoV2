@@ -1,10 +1,7 @@
-import 'package:nspo/Core/constance/colors.dart';
 import 'package:nspo/Core/extension/MediaQueryValues.dart';
-import 'package:blur/blur.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../Core/Widgets/blurBody.dart';
 import '../../Data/Models/InfoMamouria.dart';
 
 class AttendanceTimes extends StatelessWidget {

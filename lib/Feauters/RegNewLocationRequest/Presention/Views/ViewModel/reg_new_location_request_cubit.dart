@@ -2,15 +2,12 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:meta/meta.dart';
-import 'package:nspo/Core/servies/DeviceInfo.dart';
-import 'package:nspo/Feauters/ChangePhoneRequset/Data/Repo/RequsetChangePhoneRepo.dart';
-import 'package:nspo/Feauters/ChangePhoneRequset/Data/models/RequsetChangePhone.dart';
+
 
 import '../../../../../Core/servies/GeoLactor.dart';
 import '../../../../../Core/servies/sharedPerf.dart';
 import '../../../Data/Repo/RequestChangePhoneRepoImpl.dart';
 import '../../../Data/models/RegNewLocationModel.dart';
-import '../reg_new_location_request.dart';
 
 part 'reg_new_location_request_state.dart';
 

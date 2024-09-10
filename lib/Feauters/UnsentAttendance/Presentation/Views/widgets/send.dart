@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:nspo/Core/Widgets/Dailog.dart';
 import 'package:nspo/Core/extension/MediaQueryValues.dart';
 import 'package:nspo/Core/models/AttendanceRecord.dart';
-import 'package:nspo/Feauters/RegAttendanceOnline/persentation/Data/Models/InfoMamouria.dart';
 
 import '../../ViewModel/unsent_attendance_cubit.dart';
 

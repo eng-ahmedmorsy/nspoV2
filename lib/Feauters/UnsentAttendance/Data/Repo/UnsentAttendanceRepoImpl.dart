@@ -19,7 +19,6 @@ class UnsentAttendanceRepoImpl implements UnsentAttendanceRepo {
       return Left("حدث خطأ ما غير متوقع");
     }
 
-    throw UnimplementedError();
   }
 
 }

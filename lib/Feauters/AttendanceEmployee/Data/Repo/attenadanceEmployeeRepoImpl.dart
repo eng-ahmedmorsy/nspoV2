@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:nspo/Core/servies/api_services.dart';
-import 'package:nspo/Feauters/RegAttendanceOnline/persentation/Data/Models/InfoMamouria.dart';
 
 import '../../../../Core/constance/url.dart';
 import '../Model/attendance.dart';
@@ -36,7 +35,7 @@ class AttendanceEmployeeRepoImpl implements AttendanceEmployeeRepo {
     } on DioException catch(e) {
       if (e.type == DioErrorType.connectionTimeout ||
           e.type == DioErrorType.receiveTimeout ||
-          e.type == DioErrorType.sendTimeout) {
+          e.type == DioExceptionType.sendTimeout) {
         return Left("فشل الاتصال بالخادم، يرجى التحقق من الاتصال بالإنترنت والمحاولة مرة أخرى.");
       } else if (  e.error is SocketException) {
         return Left("لا يوجد اتصال بالإنترنت، يرجى التحقق من الاتصال بالإنترنت والمحاولة مرة أخرى.");

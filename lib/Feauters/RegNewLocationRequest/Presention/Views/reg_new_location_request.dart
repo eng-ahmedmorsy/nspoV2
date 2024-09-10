@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:nspo/Feauters/RegNewLocationRequest/Presention/Views/widget/FormRequset.dart';
 import 'package:nspo/Feauters/RegNewLocationRequest/Presention/Views/widget/notes.dart';
 
-import '../../../../Core/Widgets/border_label.dart';
 import 'widget/LastRequset.dart';
 import 'widget/btnRequset.dart';
 

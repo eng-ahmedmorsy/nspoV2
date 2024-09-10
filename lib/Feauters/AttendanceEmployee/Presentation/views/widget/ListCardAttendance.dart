@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nspo/Core/Widgets/Dailog.dart';
 import 'package:nspo/Core/Widgets/loading.dart';
-import 'package:nspo/Feauters/AttendanceEmployee/Data/Repo/attenadanceEmployeeRepo.dart';
-import 'package:nspo/Feauters/AttendanceEmployee/Data/Repo/attenadanceEmployeeRepoImpl.dart';
+
 import 'package:nspo/Feauters/AttendanceEmployee/Presentation/ViewModel/attendance_employee_cubit.dart';
 import 'package:nspo/Feauters/AttendanceEmployee/Presentation/views/widget/CardAttendance.dart';
 

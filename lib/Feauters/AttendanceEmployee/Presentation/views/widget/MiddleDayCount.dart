@@ -3,9 +3,11 @@ import 'package:nspo/Core/extension/MediaQueryValues.dart';
 import 'package:nspo/Feauters/AttendanceEmployee/Presentation/views/widget/showMiddleDayAttendance.dart';
 
 class MiddleDayCount extends StatelessWidget {
-  const MiddleDayCount({super.key, required this.count, required this.middleDayList});
+  const MiddleDayCount(
+      {super.key, required this.count, required this.middleDayList});
+
   final int? count;
- final List <String>  middleDayList ;
+  final List<String> middleDayList;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class MiddleDayCount extends StatelessWidget {
             size: 50,
           ),
           Text(
-            count.toString()?? "0",
+            count.toString(),
             style: TextStyle(
                 color: Colors.white,
                 fontSize: context.getResponsiveFontSize(20),

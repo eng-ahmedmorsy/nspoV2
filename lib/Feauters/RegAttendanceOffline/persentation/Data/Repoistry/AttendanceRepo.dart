@@ -1,4 +1,3 @@
-import 'package:nspo/Feauters/RegAttendanceOnline/persentation/Data/Models/RegAttendaceModel.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../../Core/models/AttendanceRecord.dart';

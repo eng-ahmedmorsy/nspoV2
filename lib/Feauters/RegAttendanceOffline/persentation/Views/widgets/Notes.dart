@@ -1,8 +1,5 @@
 import 'package:nspo/Core/extension/MediaQueryValues.dart';
-import 'package:nspo/Feauters/RegAttendanceOffline/persentation/Data/Models/InfoMamouria.dart';
-import 'package:nspo/Feauters/MainScreenView/persentation/ViewModel/main_screen_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Notes extends StatelessWidget {
   const Notes({super.key});

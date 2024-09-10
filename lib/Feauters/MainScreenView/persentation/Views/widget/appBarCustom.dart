@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:nspo/Core/servies/ErrorLocateLocation.dart';
-import 'package:nspo/Core/utils/app_router.dart';
+
 
 import '../../../../../Core/Widgets/icon_counter.dart';
-import '../../../../../Core/servies/DbHelper.dart';
 import '../../../../profile/features/presentation/views/profile_main_view.dart';
 import '../../ViewModel/main_screen_cubit.dart';
 

@@ -1,12 +1,10 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:nspo/Core/Widgets/Dailog.dart';
-import 'package:nspo/Core/servies/sharedPerf.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nspo/Feauters/MainScreenView/persentation/Views/widget/appBarCustom.dart';
 
-import '../../../../Core/Widgets/icon_counter.dart';
-import '../../../../Core/servies/DbHelper.dart';
+
 import '../ViewModel/main_screen_cubit.dart';
 
 class MainScreenView extends StatefulWidget {

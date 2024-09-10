@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nspo/Core/extension/MediaQueryValues.dart';
-import 'package:nspo/Feauters/AttendanceEmployee/Presentation/views/widget/CardAttendance.dart';
 import 'package:nspo/Feauters/AttendanceEmployee/Presentation/views/widget/ListCardAttendance.dart';
-import 'package:nspo/Feauters/AttendanceEmployee/Presentation/views/widget/MiddleDayCount.dart';
 import 'package:nspo/Feauters/AttendanceEmployee/Presentation/views/widget/SelectDate.dart';
-import 'package:nspo/Feauters/AttendanceEmployee/Presentation/views/widget/TitleDate.dart';
-import 'package:nspo/Feauters/AttendanceEmployee/Presentation/views/widget/attendanceAndLeave.dart';
 
-import '../../../../Core/Widgets/drop_down_custom.dart';
-import '../../../../Core/constance/colors.dart';
+
 import '../ViewModel/attendance_employee_cubit.dart';
 
 class AttendanceEmployeeView extends StatefulWidget {

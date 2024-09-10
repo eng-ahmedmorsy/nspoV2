@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:nspo/Core/servies/api_services.dart';
 import 'package:nspo/Feauters/Login/Data/Models/LoginData.dart';
-import 'package:nspo/Feauters/Login/Data/Models/infoEmployee.dart';
 import 'package:nspo/Feauters/Login/Data/Repository/LoginRepo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
@@ -20,9 +19,9 @@ class LoginRepoImpl implements LoginRepo {
       Map  dataEmp = response.data;
       return right(dataEmp);
     } on DioException catch (e) {
-      if (e.type == DioErrorType.connectionTimeout ||
-          e.type == DioErrorType.receiveTimeout ||
-          e.type == DioErrorType.sendTimeout) {
+      if (e.type == DioExceptionType.connectionTimeout ||
+          e.type == DioExceptionType.receiveTimeout ||
+          e.type == DioExceptionType.sendTimeout) {
         return Left("فشل الاتصال بالخادم، يرجى التحقق من الاتصال بالإنترنت والمحاولة مرة أخرى.");
       } else if (  e.error is SocketException) {
         return Left("لا يوجد اتصال بالإنترنت، يرجى التحقق من الاتصال بالإنترنت والمحاولة مرة أخرى.");

@@ -7,7 +7,6 @@ import 'package:nspo/Feauters/profile/features/Data/Repoistory/reset_password_re
 
 import '../../../../../Core/constance/url.dart';
 import '../../../../../Core/servies/api_services.dart';
-import '../../../../RegAttendanceOnline/persentation/Data/Models/RegAttendaceModel.dart';
 
 class RestPasswordRepoImpl implements ResetPasswordRepo {
   @override

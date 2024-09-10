@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nspo/Feauters/profile/features/presentation/views/profile_main_view/card_rest_password.dart';
 import 'package:nspo/Feauters/profile/features/presentation/views/profile_main_view/image_person.dart';
-import 'package:nspo/Feauters/profile/features/presentation/views/profile_main_view/logoutBtn.dart';
 import 'package:nspo/Feauters/profile/features/presentation/views/profile_main_view/name_emp.dart';
 
 import '../../../../../Core/Widgets/Dailog.dart';

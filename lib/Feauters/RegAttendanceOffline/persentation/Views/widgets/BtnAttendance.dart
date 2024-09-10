@@ -1,4 +1,3 @@
-import 'package:nspo/Core/constance/colors.dart';
 import 'package:nspo/Core/extension/MediaQueryValues.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

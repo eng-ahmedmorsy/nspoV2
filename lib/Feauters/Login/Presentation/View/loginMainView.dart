@@ -1,6 +1,4 @@
-import 'package:nspo/Core/Widgets/background_image.dart';
 import 'package:nspo/Core/utils/app_router.dart';
-import 'package:nspo/Feauters/MainScreenView/persentation/ViewModel/main_screen_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

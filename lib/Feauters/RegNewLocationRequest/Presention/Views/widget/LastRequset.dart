@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nspo/Feauters/ChangePhoneRequset/Presentation/views/ChangePhoneRequset.dart';
 import 'package:nspo/Feauters/RegNewLocationRequest/Presention/Views/ViewModel/reg_new_location_request_cubit.dart';
-import 'package:nspo/Feauters/RegNewLocationRequest/Presention/Views/reg_new_location_request.dart';
 
 import 'stauts.dart';
 

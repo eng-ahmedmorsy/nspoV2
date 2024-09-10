@@ -1,29 +1,20 @@
-import 'dart:async';
 
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/services.dart';
 import 'package:nspo/Core/servies/DbHelper.dart';
-import 'package:nspo/Core/servies/GeoLactor.dart';
-import 'package:nspo/Core/servies/UpdateApp.dart';
+
 import 'package:nspo/Core/servies/sharedPerf.dart';
 import 'package:nspo/Core/utils/app_router.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
 import 'package:nspo/Feauters/UnsentAttendance/Presentation/Views/unSentAttendance.dart';
-import 'package:permission_handler/permission_handler.dart';
 
-import '../../../../Core/servies/Biometrics.dart';
-import '../../../../Core/servies/DeviceInfo.dart';
-import '../../../../Core/servies/remoteConfig.dart';
+
 import '../../../AttendanceEmployee/Presentation/views/AttendanceEmployeeView.dart';
 import '../../../ChangePhoneRequset/Presentation/views/ChangePhoneRequset.dart';
 import '../../../RegAttendanceOffline/persentation/Views/RegAttendanceOnlineView.dart';
-import '../../../RegAttendanceOnline/persentation/ViewModel/main_screen_cubit.dart';
 import '../../../RegAttendanceOnline/persentation/Views/RegAttendanceOnlineView.dart';
 import '../../../RegNewLocationRequest/Presention/Views/reg_new_location_request.dart';
 

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+
 import 'package:geolocator/geolocator.dart';
 
 //import 'package:map/core/widgets/my_snackBar.dart';
@@ -46,6 +46,7 @@ class GeoServices {
     // Get current location
     Position position = await Geolocator.getCurrentPosition(
         locationSettings: LocationSettings(
+
           accuracy: LocationAccuracy.high,
         ),
         desiredAccuracy: LocationAccuracy.best);

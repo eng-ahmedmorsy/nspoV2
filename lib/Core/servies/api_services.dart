@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 
 class ApiService {
   final Dio _dio = Dio();
@@ -16,7 +15,7 @@ class ApiService {
   }
 
   _addToken(String? token) {
-    _dio!.options.headers['Authorization'] = "Bearer $token";
+    _dio.options.headers['Authorization'] = "Bearer $token";
     // _dio!.options.headers['Content-Type'] = 'multipart/form-data';
     //_dio!.options.headers['Accept'] = 'application/json';
   }

@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:datetime_setting/datetime_setting.dart';
-import 'package:device_info_plus/device_info_plus.dart';
-import 'package:flutter/services.dart';
+
 import 'package:geolocator/geolocator.dart';
 import 'package:nspo/Core/servies/GeoLactor.dart';
 import 'package:nspo/Core/servies/sharedPerf.dart';
@@ -16,11 +14,9 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
 import 'package:nspo/Feauters/MainScreenView/persentation/ViewModel/main_screen_cubit.dart';
-import 'package:nspo/Feauters/RegAttendanceOffline/persentation/Data/Repoistry/AttendanceRepo.dart';
-import 'package:permission_handler/permission_handler.dart';
+
 
 import '../../../../Core/models/AttendanceRecord.dart';
-import '../../../../Core/servies/Biometrics.dart';
 import '../../../../Core/servies/DeviceInfo.dart';
 import '../Data/Models/InfoMamouria.dart';
 import '../Data/Repoistry/AttendanceRepoImpl.dart';
@@ -132,7 +128,6 @@ class RegAttendanceOfflineCubit extends Cubit<RegAttendanceOfflineState> {
         bool timezoneAuto = await DatetimeSetting.timeZoneIsAuto();
         if (!timeAuto || !timezoneAuto) {
           throw "No_Auto_Time";
-          return;
         }
       }
 

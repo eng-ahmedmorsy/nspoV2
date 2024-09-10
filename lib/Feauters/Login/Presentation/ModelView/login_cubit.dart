@@ -1,6 +1,5 @@
 import 'package:nspo/Core/servies/DeviceInfo.dart';
 import 'package:nspo/Core/servies/sharedPerf.dart';
-import 'package:nspo/Feauters/Login/Data/Repository/LoginRepo.dart';
 import 'package:nspo/Feauters/Login/Data/Repository/LoginRepoImpl.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,7 +7,6 @@ import 'package:meta/meta.dart';
 import 'package:shorebird_code_push/shorebird_code_push.dart';
 
 import '../../Data/Models/LoginData.dart';
-import '../../Data/Models/infoEmployee.dart';
 
 part 'login_state.dart';
 

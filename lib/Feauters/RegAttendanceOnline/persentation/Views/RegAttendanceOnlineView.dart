@@ -1,10 +1,8 @@
 import 'dart:io';
 
-import 'package:flutter/services.dart';
 import 'package:nspo/Core/Widgets/loading.dart';
 import 'package:nspo/Core/Widgets/my_snackBar.dart';
 import 'package:nspo/Core/extension/MediaQueryValues.dart';
-import 'package:nspo/Core/servies/GeoLactor.dart';
 import 'package:nspo/Feauters/RegAttendanceOnline/persentation/Views/widgets/BtnAttendance.dart';
 import 'package:nspo/Core/Widgets/Dailog.dart';
 import 'package:flutter/material.dart';

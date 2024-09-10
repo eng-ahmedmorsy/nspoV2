@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:nspo/Core/servies/GeoLactor.dart';
 import 'package:nspo/Core/servies/sharedPerf.dart';
@@ -15,7 +13,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:shorebird_code_push/shorebird_code_push.dart';
 
 import '../../../../Core/servies/Biometrics.dart';
