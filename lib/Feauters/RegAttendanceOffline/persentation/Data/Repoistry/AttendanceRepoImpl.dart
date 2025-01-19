@@ -88,7 +88,7 @@ class AttendanceOfflineRepoImpl implements AttendanceOfflineRepo {
       }
       attendanceData.countRegInMiddleDay = attendanceRecordToday
           .where((element) => element['inOut'] == 2)
-          .length;
+          .length +1;
 
       if (attendanceData.timeOut == null) {
         attendanceData.timeOut = "--:--";

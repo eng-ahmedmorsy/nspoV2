@@ -1,9 +1,13 @@
 import 'dart:async';
+import 'dart:io';
+import 'dart:typed_data';
 
+import 'package:camera/camera.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:nspo/Core/servies/GeoLactor.dart';
 import 'package:nspo/Core/servies/sharedPerf.dart';
 import 'package:nspo/Core/utils/app_router.dart';
+import 'package:nspo/Feauters/FaceDetect/Presentation/ModelView/face_detect_cubit.dart';
 import 'package:nspo/Feauters/MainScreenView/persentation/ViewModel/main_screen_cubit.dart';
 import 'package:nspo/Feauters/RegAttendanceOnline/persentation/Data/Models/InfoMamouria.dart';
 import 'package:nspo/Feauters/RegAttendanceOnline/persentation/Data/Repoistry/AttendanceRepoImpl.dart';
@@ -14,6 +18,7 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
 import 'package:shorebird_code_push/shorebird_code_push.dart';
+import 'package:image/image.dart' as img;
 
 import '../../../../Core/servies/Biometrics.dart';
 import '../../../../Core/servies/DeviceInfo.dart';
@@ -23,14 +28,23 @@ import '../Data/Models/RegAttendaceModel.dart';
 part 'main_screen_state.dart';
 
 class RegAttendanceOnlineCubit extends Cubit<RegAttendanceOnlineState> {
-  RegAttendanceOnlineCubit(this.mainScreenCubit)
+  RegAttendanceOnlineCubit(this.mainScreenCubit, this.faceDetectCubit)
       : super(RegAttendanceOnlineInitial());
   final MainScreenCubit mainScreenCubit;
+  final FaceDetectCubit faceDetectCubit;
 
   String timeString = "";
   AttendanceData? attendanceData;
   bool isMiddleDay = true;
   final shorebirdCodePush = ShorebirdCodePush();
+  File? capturedImage;
+
+  bool isEnableFaceDetect = false;
+
+  enableFaceDetect() {
+    isEnableFaceDetect = !isEnableFaceDetect;
+    emit(EnableFaceDetectState());
+  }
 
   void _getTime() {
     final DateTime now = DateTime.now();
@@ -103,7 +117,7 @@ class RegAttendanceOnlineCubit extends Cubit<RegAttendanceOnlineState> {
     emit(emitNewState());
   }
 
-  Future getCoordinates() async {
+  Future<Coordinates> getCoordinates() async {
     Position? position = await GeoServices.getCurrentLocation();
 
     return Coordinates(
@@ -124,31 +138,67 @@ class RegAttendanceOnlineCubit extends Cubit<RegAttendanceOnlineState> {
   //   return cards;
   // }
 
-  Future<void> regAttendanceEmp(BuildContext context) async {
+  Future<File> CaptureImage() async {
+    emit(CaptureImageSFaceState());
+    XFile? image = await faceDetectCubit.controller?.takePicture();
+
+    File imageFile = File(image!.path);
+    List<int> imageBytes = await imageFile.readAsBytes();
+
+    Uint8List uint8list = Uint8List.fromList(imageBytes);
+
+    img.Image? originalImage = img.decodeImage(uint8list);
+
+    img.Image resizedImage = img.copyResize(
+      originalImage!,
+      width: 600,
+    );
+
+    List<int> compressedBytes = img.encodeJpg(resizedImage, quality: 80);
+
+    File compressedImageFile =
+        await File(image.path).writeAsBytes(compressedBytes);
+
+    return compressedImageFile;
+  }
+
+  Future<void> regAttendanceEmp() async {
     try {
+      Stopwatch stopwatch = Stopwatch()..start();
       int count = mainScreenCubit.countUnsentAttendance;
       if (count > 0) {
         emit(RegAttendanceEmpError(
-            "يوجد حضور offline لم يتم ارساله بعد برجاء ارسالها اولا"));
+            "يوجد حضور offline لم يتم ارساله بعد برجاء ارسالها اولا او حذفها"));
         return;
       }
 
-      bool isAuthenticate = await BiometricsService.authenticate();
-      if (!isAuthenticate) return;
-
+      final results = await Future.wait([
+        CaptureImage(),
+        getPersonalId(),
+        // getDeviceId(),
+        getCoordinates(),
+      ]);
       emit(RegAttendanceEmpLoading());
-      AttendanceRepoImpl attendanceRepoImpl = AttendanceRepoImpl();
-      RegAttendanceModel regAttendanceModel = RegAttendanceModel();
-      regAttendanceModel.coordinates = await getCoordinates();
+      isEnableFaceDetect = false;
 
-      int personalId = await getPersonalId();
+      File pathImage = results[0] as File;
+      int personalId = results[1] as int;
+      Coordinates coordinates = results[2] as Coordinates;
 
-      regAttendanceModel.personId = personalId;
-      regAttendanceModel.deviceId = await getDeviceId();
-      regAttendanceModel.isMiddleDay = isMiddleDay;
+      RegAttendanceModel regAttendanceModel = RegAttendanceModel()
+        ..coordinates = coordinates
+        ..personId = personalId
+        ..deviceId = "string"
+        ..isMiddleDay = isMiddleDay
+        ..image = pathImage.path;
+
+
 
       final result =
-          await attendanceRepoImpl.addAttendanceData(regAttendanceModel);
+          await AttendanceRepoImpl().addAttendanceData(regAttendanceModel);
+      stopwatch.stop();
+
+      // معالجة النتيجة
       result.fold((l) {
         emit(RegAttendanceEmpError(l));
       }, (r) async {
@@ -157,7 +207,6 @@ class RegAttendanceOnlineCubit extends Cubit<RegAttendanceOnlineState> {
       });
     } catch (e) {
       print(e);
-
       emit(RegAttendanceEmpError(e.toString(), isLocation: true));
     }
   }

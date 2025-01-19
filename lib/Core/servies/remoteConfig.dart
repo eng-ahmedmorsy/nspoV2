@@ -24,6 +24,10 @@ class RemoteConfigService {
     await remoteConfig.fetchAndActivate();
 
     apiURL = remoteConfig.getString('API_URL').trim();
+    print(apiURL);
+    print(apiURL);
+    print(apiURL);
+    print(apiURL);
     version = remoteConfig.getString('VERSION').trim();
   }
 }

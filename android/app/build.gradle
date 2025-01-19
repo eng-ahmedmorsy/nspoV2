@@ -40,6 +40,8 @@ android {
             signingConfig = signingConfigs.debug
         }
     }
+    namespace = "com.ahmedmorsi.hr"
+
 }
 
 flutter {

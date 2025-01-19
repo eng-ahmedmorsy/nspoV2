@@ -1,4 +1,3 @@
-
 import 'package:geolocator/geolocator.dart';
 
 //import 'package:map/core/widgets/my_snackBar.dart';
@@ -46,11 +45,9 @@ class GeoServices {
     // Get current location
     Position position = await Geolocator.getCurrentPosition(
         locationSettings: LocationSettings(
-
-          accuracy: LocationAccuracy.high,
+          accuracy: LocationAccuracy.bestForNavigation,
         ),
-        desiredAccuracy: LocationAccuracy.best);
-
+    );
     bool isMockLocation = position.isMocked;
     if (isMockLocation) {
       throw "Mock_Location";

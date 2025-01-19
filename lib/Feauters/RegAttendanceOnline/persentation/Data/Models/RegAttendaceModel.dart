@@ -1,9 +1,12 @@
+import 'package:dio/dio.dart';
+
 class RegAttendanceModel {
   int? personId;
   Coordinates? coordinates;
   String? deviceId;
   bool? isMiddleDay;
   String? attDate;
+  String? image;
 
   RegAttendanceModel({
     this.personId,
@@ -11,7 +14,7 @@ class RegAttendanceModel {
     this.deviceId,
     this.isMiddleDay,
     this.attDate,
-    // Default value set to false
+    this.image,
   });
 
   factory RegAttendanceModel.fromJson(Map<String, dynamic> json) {
@@ -22,9 +25,8 @@ class RegAttendanceModel {
           : null,
       deviceId: json['deviceId'],
       attDate: json['attDate'],
-
-      isMiddleDay:
-          json['isMiddleDay'] ?? false, // Default to false if not provided
+      isMiddleDay: json['isMiddleDay'] ?? false,
+      image: json['image']
     );
   }
 
@@ -35,7 +37,26 @@ class RegAttendanceModel {
       'deviceId': deviceId,
       'isMiddleDay': isMiddleDay,
       'attDate': attDate,
+      // نترك الصورة خارج toJson لأننا سنرسلها باستخدام FormData
     };
+  }
+
+  Future<FormData> toFormData() async {
+    return FormData.fromMap({
+      'personId': personId,
+      'coordinates': coordinates?.toJson(),
+      'deviceId': deviceId,
+      'isMiddleDay': isMiddleDay,
+      'attDate': attDate,
+      'image': await getImageMultipart(),
+    });
+  }
+
+  Future<MultipartFile?> getImageMultipart() async {
+    if (image != null) {
+      return MultipartFile.fromFile(image!,contentType: DioMediaType('image', 'jpg'));
+    }
+    return null;
   }
 }
 

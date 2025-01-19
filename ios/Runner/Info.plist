@@ -7,6 +7,8 @@
     <string>يحتاج هذا التطبيق إلى الوصول إلى موقعك الحالي للتأكد من أنك في موقع المشروع المحدد.</string>
     <key>NSLocationAlwaysUsageDescription</key>
     <string>يحتاج هذا التطبيق إلى الوصول إلى موقعك لتأكيد أنك في موقع المشروع المحدد، حتى عند عدم استخدام التطبيق.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>يرجى السماح لنا بالوصول إلى الكاميرا لتوثيق هويتك من خلال عملية التحقق من الوجه.</string>
     <key>NSFaceIDUsageDescription</key>
     <string>Why is my app authenticating using face id?</string>
  	<key>CFBundleDevelopmentRegion</key>

@@ -27,7 +27,7 @@ class MainScreenCubit extends Cubit<MainScreenState> {
     Icon(Icons.description_outlined, size: 30, color: Colors.white),
     Icon(Icons.save_as, size: 30, color: Colors.white),
     Icon(Icons.fingerprint, size: 30, color: Colors.white),
-    Icon(Icons.wifi_off, size: 30, color: Colors.white),
+     Icon(Icons.wifi_off, size: 30, color: Colors.white),
     Icon(Icons.near_me, size: 30, color: Colors.white),
     Icon(Icons.edit_location_alt_rounded, size: 30, color: Colors.white),
   ];

@@ -11,27 +11,29 @@ import 'package:dio/dio.dart';
 class AttendanceRepoImpl implements AttendanceRepo {
   @override
   Future<Either<String, AttendanceData>> getAttendanceDataEmp(
-      {required Map<String,dynamic> data}) async {
+      {required Map<String, dynamic> data}) async {
     Response response;
     try {
       ApiService apiService = ApiService();
       response = await apiService.postData(
-          path: UrlEndpoint.getAttendanceData(),
-          data: data);
+          path: UrlEndpoint.getAttendanceData(), data: data);
       AttendanceData attendanceData = AttendanceData.fromJson(response.data);
       return Right(attendanceData);
     } on DioException catch (e) {
+
       if (e.type == DioExceptionType.connectionTimeout ||
           e.type == DioExceptionType.receiveTimeout ||
           e.type == DioExceptionType.sendTimeout) {
-        return Left("فشل الاتصال بالخادم، يرجى التحقق من الاتصال بالإنترنت والمحاولة مرة أخرى.");
-      } else if (  e.error is SocketException) {
-        return Left("لا يوجد اتصال بالإنترنت، يرجى التحقق من الاتصال بالإنترنت والمحاولة مرة أخرى.");
+        return Left(
+            "فشل الاتصال بالخادم، يرجى التحقق من الاتصال بالإنترنت والمحاولة مرة أخرى.");
+      } else if (e.error is SocketException) {
+        return Left(
+            "لا يوجد اتصال بالإنترنت، يرجى التحقق من الاتصال بالإنترنت والمحاولة مرة أخرى.");
       } else if (e.response?.statusCode == 403) {
         return Left(e.response?.data.toString() ?? 'Unknown error');
       }
       return Left("حدث خطأ ما يرجى المحاولة مرة أخرى");
-    }  catch (e) {
+    } catch (e) {
       return Left("حدث خطأ ما يرجى المحاولة مرة أخرى");
     }
   }
@@ -41,16 +43,19 @@ class AttendanceRepoImpl implements AttendanceRepo {
       RegAttendanceModel regAttend) async {
     try {
       ApiService apiService = ApiService();
+      FormData formData = await regAttend.toFormData();
+
       await apiService.postData(
-          path: UrlEndpoint.regAttendanceData(), data: regAttend.toJson());
+          path: UrlEndpoint.regAttendanceData(), data: formData);
 
       return const Right("تم تسجيل الحضور بنجاح");
     } on DioException catch (e) {
       if (e.type == DioExceptionType.connectionTimeout ||
           e.type == DioExceptionType.receiveTimeout ||
           e.type == DioExceptionType.sendTimeout) {
-        return Left("فشل الاتصال بالخادم، يرجى التحقق من الاتصال بالإنترنت والمحاولة مرة أخرى.");
-        }
+        return Left(
+            "فشل الاتصال بالخادم، يرجى التحقق من الاتصال بالإنترنت والمحاولة مرة أخرى.");
+      }
       if (e.response?.statusCode == 403) {
         return Left(e.response?.data.toString() ?? 'Unknown error');
       }

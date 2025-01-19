@@ -25,6 +25,9 @@ final class GetAttendanceDataLoaded extends RegAttendanceOnlineState {}
 final class SuccessState extends RegAttendanceOnlineState {}
 final class UpdatesAvailable extends RegAttendanceOnlineState {}
 
+final class CaptureImageSFaceState extends RegAttendanceOnlineState {}
+final class EnableFaceDetectState extends RegAttendanceOnlineState {}
+
 final class GetAttendanceDataEmpError extends RegAttendanceOnlineState {
   final String message;
 

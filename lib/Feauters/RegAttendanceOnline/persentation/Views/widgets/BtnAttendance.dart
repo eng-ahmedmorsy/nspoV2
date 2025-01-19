@@ -15,7 +15,7 @@ class BtnAttendance extends StatelessWidget {
     var cubit = context.read<RegAttendanceOnlineCubit>();
     return GestureDetector(
       onTap: () {
-        cubit.regAttendanceEmp(context);
+        // cubit.regAttendanceEmp();
       },
       child: Container(
         width: context.width * 0.8,

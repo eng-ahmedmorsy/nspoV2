@@ -1,11 +1,11 @@
 import 'package:nspo/Feauters/AttendanceEmployee/Presentation/ViewModel/attendance_employee_cubit.dart';
 import 'package:nspo/Feauters/Login/Presentation/ModelView/login_cubit.dart';
 import 'package:nspo/Feauters/MainScreenView/persentation/ViewModel/main_screen_cubit.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nspo/Feauters/RegAttendanceOnline/persentation/ViewModel/main_screen_cubit.dart';
 import 'package:nspo/Feauters/RegNewLocationRequest/Presention/Views/ViewModel/reg_new_location_request_cubit.dart';
+import 'package:nspo/Feauters/UploadImageFace/presentation/ModelImage/upload_face_cubit.dart';
 
 import 'Core/servies/remoteConfig.dart';
 import 'Core/utils/app_router.dart';
@@ -13,6 +13,7 @@ import 'Core/utils/bloc_observer.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import 'Feauters/ChangePhoneRequset/Presentation/ViewModel/requset_change_phone_cubit.dart';
+import 'Feauters/FaceDetect/Presentation/ModelView/face_detect_cubit.dart';
 import 'Feauters/RegAttendanceOffline/persentation/ViewModel/RegAttendanceOfflineCubit.dart';
 import 'Feauters/UnsentAttendance/Presentation/ViewModel/unsent_attendance_cubit.dart';
 import 'Feauters/profile/features/presentation/ModelView/reset_password_cubit.dart';
@@ -26,13 +27,13 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await RemoteConfigService.instance.initialize();
+
   runApp(const MyApp());
 
-  Bloc.observer = MyBlocObserver();
+  // Bloc.observer = MyBlocObserver();
 }
 
 Future<void> _requestPermissions() async {
-  // Request location permissions
   var locationStatus = await Permission.location.status;
   if (!locationStatus.isGranted) {
     await Permission.location.request();
@@ -64,9 +65,6 @@ class _MyAppState extends State<MyApp> {
             create: (context) => MainScreenCubit(),
           ),
           BlocProvider(
-            create: (context) => RegAttendanceOnlineCubit(context.read<MainScreenCubit>()),
-          ),
-          BlocProvider(
             create: (context) => AttendanceEmployeeCubit(),
           ),
           BlocProvider(
@@ -85,6 +83,18 @@ class _MyAppState extends State<MyApp> {
           ),
           BlocProvider(
             create: (context) => RegNewLocationRequestCubit(),
+          ),
+          BlocProvider(
+            create: (context) => FaceDetectCubit(),
+          ),
+          BlocProvider(
+            create: (context) => RegAttendanceOnlineCubit(
+                context.read<MainScreenCubit>(),
+                context.read<FaceDetectCubit>()),
+          ),
+          BlocProvider(
+            create: (context) =>
+                UploadFaceCubit(context.read<FaceDetectCubit>()),
           ),
         ],
         child: MaterialApp.router(

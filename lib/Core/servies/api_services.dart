@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
 
 class ApiService {
   final Dio _dio = Dio();
@@ -45,10 +48,15 @@ class ApiService {
      Map<String,dynamic>   ? queryParameters,
       void Function(int, int)? onSendProgress}) async {
     // _addToken(token);
+     (_dio.httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate = (client) {
+       client.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
+       return client;
+     };
 
     var response = await _dio.post(path,
         queryParameters: queryParameters,
         data: data, options: options, onSendProgress: onSendProgress);
+
     return response;
   }
 

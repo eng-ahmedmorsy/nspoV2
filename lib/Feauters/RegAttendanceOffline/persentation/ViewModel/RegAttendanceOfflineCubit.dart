@@ -17,6 +17,7 @@ import 'package:nspo/Feauters/MainScreenView/persentation/ViewModel/main_screen_
 
 
 import '../../../../Core/models/AttendanceRecord.dart';
+import '../../../../Core/servies/Biometrics.dart';
 import '../../../../Core/servies/DeviceInfo.dart';
 import '../Data/Models/InfoMamouria.dart';
 import '../Data/Repoistry/AttendanceRepoImpl.dart';
@@ -118,8 +119,8 @@ class RegAttendanceOfflineCubit extends Cubit<RegAttendanceOfflineState> {
 
   Future<void> regAttendanceEmp(BuildContext context) async {
     try {
-      // bool isAuthenticate = await BiometricsService.authenticate();
-      // if (!isAuthenticate) return;
+      bool isAuthenticate = await BiometricsService.authenticate();
+      if (!isAuthenticate) return;
       emit(RegAttendanceEmpLoading());
 
 
